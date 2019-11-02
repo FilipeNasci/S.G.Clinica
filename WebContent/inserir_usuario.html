@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+<title>SGC - v.1.0</title>
+</head>
+<body>
+<h1>SGC - Sistema de Gestão de Clínicas</h1>
+<h2>Cadastro de usuários</h2>
+<form name="formInsereUsuario" method="post" action="InserirUsuario" target="_parent">
+	<p>Nome do usuário: <input name="txtUsuario" type="text" size="20" maxlength="20"></p><br>
+	<p>Senha: 	<input name="txtSenha" type="password" size="10" maxlength="10"></p><br>
+	
+	<p><input name="chkAdministrativo" type="checkbox" value="ModuloAdministrativo">Módulo Administrativo</p><br>
+	<p><input name="chkFuncionario" type="checkbox" value="Funcionario">Cadastro de funcionários</p><br>
+	<p><input name="chkUsuario" type="checkbox" value="Usuario">Cadastro de usuários</p><br>
+	<p><input name="chkEspecialidade" type="checkbox" value="Usuario">Cadastro de especialidades</p><br>
+	<p><input name="chkMedico" type="checkbox" value="Medico">Cadastro de médicos</p><br>
+	<p><input name="chkConvenio" type="checkbox" value="Convenio">Cadastro de convênios</p><br>
+	<p><input name="chkAgendamento" type="checkbox" value="Agendamento">Módulo de agendamentos</p><br>
+	<p><input name="chkPaciente" type="checkbox" value="Paciente">Cadastro de pacientes</p><br>
+	<p><input name="chkAgendarConsulta" type="checkbox" value="AgendarConsulta">Agendamento de consultas</p><br>
+	<p><input name="chkCancelarConsulta" type="checkbox" value="CancelarConsulta">Cancelamento de consultas</p><br>
+	<p><input name="chkAtendimento" type="checkbox" value="ModuloAtendimento">Módulo de atendimento médico</p><br>
+	<p><input name="btnGravar" type="submit" value="Gravar"/> <span><a href="javascript:history.back()">[Voltar]</a></span></p>
+</form>
+</body>
+</html>
