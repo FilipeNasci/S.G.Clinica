@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import banco_dados.ConexaoBancoDados;
-import banco_dados.Funcionarios;
+import banco_dados.Usuarios;
 
 /**
- * Servlet implementation class ExcluirFuncionario
+ * Servlet implementation class ExcluirUsuario
  */
-@WebServlet("/ExcluirFuncionario")
-public class ExcluirFuncionario extends HttpServlet {
+@WebServlet("/ExcluirUsuario")
+public class ExcluirUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ExcluirFuncionario() {
+    public ExcluirUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,28 +43,26 @@ public class ExcluirFuncionario extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		out = response.getWriter();
 		
-		out.println("<!DOCYPE html>");
+		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />");
+		out.println("<meta http-equiv='Content-Type' content='text/html'; charset=UTF-8;'");
 		out.println("<title>SGC - v.1.0</title>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>SGC - Sistema de Gestão de Clínicas</h1>");
-		out.println("<h2>Exclusão de funcionários</h2>");
+		out.println("<h2>Cadastro de usuários - Pesquisa</h2>");
 		
 		try {
 			ConexaoBancoDados conexao = new ConexaoBancoDados();
-			Funcionarios funcionario = new Funcionarios();
+			Usuarios usuario = new Usuarios();
 			
-			if(conexao.abrirConexao()) {
-				funcionario.configurarConexao(conexao.obterConexao());
-				out.println("<h1>Abriu conexão!<h1>");
-				//if(usuario.excluirRegistro(Integer.parseInt(request.getParameter("codigo_usuario")))) {
-				if(funcionario.excluirRegistro(Integer.parseInt(request.getParameter("codigo_funcionario")))) {
+			if (conexao.abrirConexao()) {
+				usuario.configurarConexao(conexao.obterConexao());
+				if(usuario.excluirRegistro(Integer.parseInt(request.getParameter("codigo_usuario")))) {
 					out.println("<h2>Registro de funcionário exlcuido com sucesso!</h2>");
 					out.println("<br><br><br>");
-					out.println("<a href='menu_funcionarios.html'>[Fechar]</a>");
+					out.println("<a href='menu_usuarios.html'>[Fechar]</a>");
 				}else {
 					out.println("<h2>Não foi possivel excluir o registro de funcionário!</h2>");
 				}
@@ -74,7 +72,7 @@ public class ExcluirFuncionario extends HttpServlet {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.println("<h2>Erro do sistema: processo de cadastro de funcionário!</h2>");
+			out.println("<h2>Erro do sistema: processo de exclusão de usuário!</h2>");
 		}
 		out.println("</body");
 		out.println("</html");

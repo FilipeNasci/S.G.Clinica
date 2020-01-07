@@ -49,7 +49,7 @@
 		<h1>SGC - Sistema de Gestão de Clínicas</h1>
 		<h2>Cadastro de usuários</h2>
 	
-		<form name="formEditaUsuario" method="post" action="atualizarUsuario" target="_parent">
+		<form name="formEditaUsuario" method="post" action="AtualizarUsuario" target="_parent">
 			<p>Nome do Usuário: <input type="text" name="txtNomeUsuario" size="20" maxlength="20" value="<%=Xusuario.getIdUsuario()%>"></p>
 			
 			<% if(Xusuario.getModuloAdministrativo().equals("S")){%>

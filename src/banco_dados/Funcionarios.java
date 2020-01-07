@@ -69,17 +69,17 @@ public class Funcionarios {
 
 		try {
 			if(strCampo.equals("NOME")) 
-				strComandoSQL = "SELECT codigo_funcionario FROM funcionarios WHERE nome like '%"+strValor+"%'";
+				strComandoSQL = "SELECT Codigo_Funcionario FROM funcionarios WHERE Nome_Completo like '%"+strValor+"%'";
 			else if(strCampo.equals("RG"))
-				strComandoSQL = "SELECT codigo_funcionario FROM funcionarios WHERE rg like '%"+strValor+"%'";
+				strComandoSQL = "SELECT Codigo_Funcionario FROM funcionarios WHERE Numero_RG = '"+strValor+"'";
 			else
-				strComandoSQL = "SELECT codigo_funcionario FROM funcionarios WHERE cpf like '%"+strValor+"%'";
+				strComandoSQL = "SELECT Codigo_Funcionario FROM funcionarios WHERE Numero_CPF = '"+strValor+"'";
 
 			psComando = conBanco.prepareStatement(strComandoSQL);
 			rsRegistros = psComando.executeQuery();
 			rsRegistros.next();
 
-			intCodigoFuncionario = rsRegistros.getInt("codigo_funcionario");
+			intCodigoFuncionario = rsRegistros.getInt("Codigo_Funcionario");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,7 +89,7 @@ public class Funcionarios {
 	public ResultSet lerRegistro(int intCodigoFuncionario) {
 		String strComandoSQL;
 		try {
-			strComandoSQL = "SELECT * FROM funcionarios WHERE codigo_funcionario = " + intCodigoFuncionario;
+			strComandoSQL = "SELECT * FROM funcionarios WHERE Codigo_Funcionario = " + intCodigoFuncionario;
 			psComando = conBanco.prepareStatement(strComandoSQL);
 			rsRegistros = psComando.executeQuery();
 			rsRegistros.next();
@@ -115,22 +115,22 @@ public class Funcionarios {
 			if(!(strDataInvertida.equals("null")))
 				strDataInvertida = "'" + strDataInvertida + "'";
 
-			strComandoSQL = "UPDATE funcionarios SET nome = '" + funcionario.getNome() + "', " +
-					"rg = '" + funcionario.getRg() + "', " +
-					"orgao_emissor = '" + funcionario.getOrgao_emissor() + "', " +
-					"cpf = '" + funcionario.getCpf() + "', " +
-					"endereco = '" + funcionario.getEndereco() + "', " +
-					"numero = '" + funcionario.getNumero() + "', " +
-					"complemento = '" + funcionario.getComplemento() + "', " +
-					"bairro = '" + funcionario.getBairro() + "', " +
-					"cidade = '" + funcionario.getCidade() + "', " +
-					"estado = '" + funcionario.getEstado() + "', " +
-					"telefone = '" + funcionario.getTelefone() + "', " +
-					"celular = '" + funcionario.getCelular() + "', " +
-					"numero_ctps = '" + funcionario.getNumero_ctps() + "', " +
-					"numero_pis = '" + funcionario.getNumero_pis() + "', " +
-					"sexo = '" + funcionario.getSexo() + "', " +
-					"data_nascimento = '" + strDataInvertida +
+			strComandoSQL = "UPDATE funcionarios SET Nome_Completo = '" + funcionario.getNome() + "', " +
+					"Numero_RG = '" + funcionario.getRg() + "', " +
+					"Orgao_Emissor = '" + funcionario.getOrgao_emissor() + "', " +
+					"Numero_CPF = '" + funcionario.getCpf() + "', " +
+					"Endereco = '" + funcionario.getEndereco() + "', " +
+					"Numero = '" + funcionario.getNumero() + "', " +
+					"Complemento = '" + funcionario.getComplemento() + "', " +
+					"Bairro = '" + funcionario.getBairro() + "', " +
+					"Cidade = '" + funcionario.getCidade() + "', " +
+					"Estado = '" + funcionario.getEstado() + "', " +
+					"Telefone = '" + funcionario.getTelefone() + "', " +
+					"Celular = '" + funcionario.getCelular() + "', " +
+					"Numero_CTPS = '" + funcionario.getNumero_ctps() + "', " +
+					"numero_PIS = '" + funcionario.getNumero_pis() + "', " +
+					"Sexo = '" + funcionario.getSexo() + "', " +
+					"Data_Nascimento = '" + strDataInvertida +
 					"WHERE codigo_funcionario = " + funcionario.getCodigo_funcionario();
 			
 			psComando = conBanco.prepareStatement(strComandoSQL);
@@ -143,12 +143,12 @@ public class Funcionarios {
 	}
 	
 	public boolean excluirRegistro(int intCodigoFuncionario) {
-		String comandoSQL;
+		String strComandoSQL;
 		
 		try {
-			comandoSQL = "DELETE FROM funcionarios WHERE condigo_funcionario = " + intCodigoFuncionario;
-			psComando = conBanco.prepareStatement(comandoSQL);
-			psComando.executeQuery();
+			strComandoSQL = "DELETE FROM funcionarios WHERE Codigo_Funcionario = "+intCodigoFuncionario;
+			psComando = conBanco.prepareStatement(strComandoSQL);
+			psComando.executeUpdate();			
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -160,7 +160,7 @@ public class Funcionarios {
 		String comandoSQL;
 		
 		try {
-			comandoSQL = "SELECT * FROM funcionarios ORDER BY nome";
+			comandoSQL = "SELECT * FROM funcionarios ORDER BY Nome_Completo";
 			psComando = conBanco.prepareStatement(comandoSQL);
 			rsRegistros = psComando.executeQuery();
 			return rsRegistros;

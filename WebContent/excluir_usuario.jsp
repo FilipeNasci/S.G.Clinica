@@ -28,7 +28,7 @@ if(conexao.abrirConexao()){
 	Xusuario.setCadastroFuncionario(rsRegistro.getString("Cadastro_Funcionario"));
 	Xusuario.setCadastroUsuario(rsRegistro.getString("Cadastro_Usuario"));
 	Xusuario.setCadastroPaciente(rsRegistro.getString("Cadastro_Paciente"));
-	Xusuario.setCadastroEspecialidade(rsRegistro.getString("CadastroEspecialidade"));
+	Xusuario.setCadastroEspecialidade(rsRegistro.getString("Cadastro_Especialidade"));
 	Xusuario.setCadastroMedico(rsRegistro.getString("Cadastro_Medico"));
 	Xusuario.setCadastroConvenio(rsRegistro.getString("Cadastro_Convenio"));
 	Xusuario.setAgendamentoConsulta(rsRegistro.getString("Agendamento_Consulta"));
@@ -47,7 +47,7 @@ if(conexao.abrirConexao()){
 <%	if(blnConectado){ %>
 		<h1>SGC - Sistema de Gestão de Clínicas</h1>
 		<h2>Cadastro de usuários</h2>
-		<form name="formExcluiUsuario" method="post" action="ExcluirUsuario" target="parent">
+		<form name="formExcluiUsuario" method="post" action="ExcluirUsuario" target="_parent">
 		<p>Nome do usuário: <%=Xusuario.getIdUsuario() %></p>
 		<br>
 		<p>Módulo administrativo: <%=Xusuario.getModuloAdministrativo() %></p>

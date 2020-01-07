@@ -25,28 +25,28 @@ int codigoFuncionario = Integer.parseInt(request.getParameter("codigo_funcionari
 if(conexao.abrirConexao()){
 	funcionario.configurarConexao(conexao.obterConexao());
 	rsRegistro = funcionario.lerRegistro(codigoFuncionario);
-	dtDataNascimento = rsRegistro.getDate("data_nascimento");
+	dtDataNascimento = rsRegistro.getDate("Data_Nascimento");
 	
 	dia = converter.DiaData(dtDataNascimento);
 	mes = converter.MesData(dtDataNascimento);
 	ano = converter.AnoData(dtDataNascimento);
 	
-	cfuncionario.setNome(rsRegistro.getString("nome"));
-	cfuncionario.setRg(rsRegistro.getString("rg"));
-	cfuncionario.setOrgao_emissor(rsRegistro.getString("orgao_emissor"));
-	cfuncionario.setCpf(rsRegistro.getString("cpf"));
-	cfuncionario.setEndereco(rsRegistro.getString("endereco"));
-	cfuncionario.setNumero(rsRegistro.getString("numero"));
-	cfuncionario.setComplemento(rsRegistro.getString("complemento"));
-	cfuncionario.setBairro(rsRegistro.getString("bairro"));
-	cfuncionario.setCidade(rsRegistro.getString("cidade"));
-	cfuncionario.setEstado(rsRegistro.getString("estado"));
-	cfuncionario.setTelefone(rsRegistro.getString("telefone"));
-	cfuncionario.setCelular(rsRegistro.getString("celular"));
-	cfuncionario.setNumero_ctps(rsRegistro.getString("numero_ctps"));
-	cfuncionario.setNumero_pis(rsRegistro.getString("numero_pis"));
+	cfuncionario.setNome(rsRegistro.getString("Nome_Completo"));
+	cfuncionario.setRg(rsRegistro.getString("Numero_RG"));
+	cfuncionario.setOrgao_emissor(rsRegistro.getString("Orgao_Emissor"));
+	cfuncionario.setCpf(rsRegistro.getString("Numero_CPF"));
+	cfuncionario.setEndereco(rsRegistro.getString("Endereco"));
+	cfuncionario.setNumero(rsRegistro.getString("Numero"));
+	cfuncionario.setComplemento(rsRegistro.getString("Complemento"));
+	cfuncionario.setBairro(rsRegistro.getString("Bairro"));
+	cfuncionario.setCidade(rsRegistro.getString("Cidade"));
+	cfuncionario.setEstado(rsRegistro.getString("Estado"));
+	cfuncionario.setTelefone(rsRegistro.getString("Telefone"));
+	cfuncionario.setCelular(rsRegistro.getString("Celular"));
+	cfuncionario.setNumero_ctps(rsRegistro.getString("Numero_CTPS"));
+	cfuncionario.setNumero_pis(rsRegistro.getString("Numero_PIS"));
 	cfuncionario.setDataNascimento(Integer.toString(dia),Integer.toString(mes), Integer.toString(ano));
-	cfuncionario.setSexo(rsRegistro.getString("sexo"));
+	cfuncionario.setSexo(rsRegistro.getString("Sexo"));
 	
 	conexao.fecharConexao();
 	conectado = true;
@@ -69,7 +69,7 @@ if(conexao.abrirConexao()){
 		<p>Cidade: <%=cfuncionario.getCidade() %></p>
 		<p>Telefone: <%=cfuncionario.getTelefone() %></p>
 		<p>CTPS: <%=cfuncionario.getNumero_ctps() %> - PIS: <%=cfuncionario.getNumero_pis() %></p>
-		<p><input type="hidden" name="codigo_funcionario" value="<%=cfuncionario.getCodigo_funcionario()%>"></p>
+		<p><input type="hidden" name="codigo_funcionario" value="<%=codigoFuncionario%>"></p>
 		<br>
 		<p><input type="submit" name="btnExcluir" value="Excluir">
 			<span><a href="javascript:history.back()">[Voltar]</a></span></p>

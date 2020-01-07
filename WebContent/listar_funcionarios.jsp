@@ -26,11 +26,11 @@ if(conexao.abrirConexao()){
 		out.println("<tr><th>Nome</th><th>RG</th><th>CPF</th><th>Nascimento</th><th>Endereço</th></tr>");
 		while(rsRegistros.next()){
 			out.println("<tr>");
-			out.println("<td>"+rsRegistros.getString("nome")+"</td>");
-			out.println("<td>"+rsRegistros.getString("rg")+"</td>");
-			out.println("<td>"+rsRegistros.getString("cpf")+"</td>");
-			out.println("<td>"+converter.DateToString(rsRegistros.getDate("data_nascimento"))+"</td>");
-			out.println("<td>"+rsRegistros.getString("endereco")+"</td>");
+			out.println("<td>"+rsRegistros.getString("Nome_Completo")+"</td>");
+			out.println("<td>"+rsRegistros.getString("Numero_RG")+"</td>");
+			out.println("<td>"+rsRegistros.getString("Numero_CPF")+"</td>");
+			out.println("<td>"+converter.DateToString(rsRegistros.getDate("Data_Nascimento"))+"</td>");
+			out.println("<td>"+rsRegistros.getString("Endereco")+"</td>");
 			out.println("</tr>");
 		}
 		out.println("</table>");

@@ -86,20 +86,20 @@ public class PesquisarFuncionario extends HttpServlet {
 
 				if(intCodigoFuncionario != 0) {
 					rsRegistro = funcionario.lerRegistro(intCodigoFuncionario);
-					strDataNascimento = converter.DateToString(rsRegistro.getDate("data_Nascimento"));
+					strDataNascimento = converter.DateToString(rsRegistro.getDate("Data_Nascimento"));
 
-					out.println("Nome do funcionário: "+rsRegistro.getString("nome"));
-					out.println("Data de nascimento: "+strDataNascimento+" - Sexo: "+rsRegistro.getString("sexo")+"<br>");
-					out.println("RG: "+rsRegistro.getString("rg")+" - Órgão emissor: "+rsRegistro.getString("orgao_emissor")+"<br>");
-					out.println("CPF: "+rsRegistro.getString("cpf")+"<br>");
-					out.println("Endereço: "+rsRegistro.getString("endereco")+", "+rsRegistro.getString("numero")+"<br>");
-					out.println("Complemento: "+rsRegistro.getString("complemento")+"<br>");
-					out.println("Cidade: "+rsRegistro.getString("cidade")+" - Estado: "+rsRegistro.getString("estado")+"<br>");
-					out.println("Telefone: "+rsRegistro.getString("telefone")+" - Celular: "+rsRegistro.getString("celular")+"<br>");
-					out.println("CTPS: "+rsRegistro.getString("numero_ctps")+" - PIS:"+rsRegistro.getString("numero_pis")+"<br>");
+					out.println("Nome do funcionário: "+rsRegistro.getString("Nome_Completo"));
+					out.println("Data de nascimento: "+strDataNascimento+" - Sexo: "+rsRegistro.getString("Sexo")+"<br>");
+					out.println("RG: "+rsRegistro.getString("Numero_RG")+" - Órgão emissor: "+rsRegistro.getString("orgao_emissor")+"<br>");
+					out.println("CPF: "+rsRegistro.getString("Numero_CPF")+"<br>");
+					out.println("Endereço: "+rsRegistro.getString("Endereco")+", "+rsRegistro.getString("Numero")+"<br>");
+					out.println("Complemento: "+rsRegistro.getString("Complemento")+"<br>");
+					out.println("Cidade: "+rsRegistro.getString("Cidade")+" - Estado: "+rsRegistro.getString("Estado")+"<br>");
+					out.println("Telefone: "+rsRegistro.getString("Telefone")+" - Celular: "+rsRegistro.getString("Celular")+"<br>");
+					out.println("CTPS: "+rsRegistro.getString("Numero_CTPS")+" - PIS:"+rsRegistro.getString("Numero_PIS")+"<br>");
 					out.println("<br><br>");
-					out.println("<a href='editar_funcionario.jsp?codigo_funcionario="+intCodigoFuncionario+"'>[Editar]</a> <a"
-							+ "href='excluir_funcionario.jsp?funcionario.jsp?codigo_funcionario="+intCodigoFuncionario+"'>[Excluir]</a>");
+					out.println("<a href='editar_funcionario.jsp?codigo_funcionario="+intCodigoFuncionario+"'>[Editar]</a> "
+							+ "<a href='excluir_funcionario.jsp?codigo_funcionario="+intCodigoFuncionario+"'>[Excluir]</a>");
 					out.println("<span><a href='javascript:history.back()'>[Voltar]</a></span>");
 				}else {
 					out.println("<h2>Funcionário não encontrado!</h2>");

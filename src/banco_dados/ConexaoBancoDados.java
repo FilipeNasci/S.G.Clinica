@@ -8,9 +8,12 @@ public class ConexaoBancoDados {
 	public boolean abrirConexao() {
 		String url = "jdbc:mysql://localhost/clinica_medica?user=root&password=";
 		
+		//String url = "jdbc:mysql://localhost/clinica_medica?autoReconnect=true&useSSL=false";
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conBanco = DriverManager.getConnection(url);
+			//conBanco = DriverManager.getConnection(url, "root", "");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
