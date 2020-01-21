@@ -139,8 +139,8 @@ public class InserirUsuario extends HttpServlet {
 			e.printStackTrace();
 			out.println("<h2>Erro do sistema: processo de cadastro de usuário!</h2>");
 		}
-		out.println("</body");
-		out.println("</html");
+		out.println("</body>");
+		out.println("</html>");
 	}
 
 }

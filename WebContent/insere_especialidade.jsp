@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>Conexão com o banco de dados</h2>
-	
+	//acho q vai ter q excluir essa classe, foi so teste no inicio
 	<%
 	if(conexao.abrirConexao()){
 		especialidade.configurarConexao(conexao.obterConexao());

@@ -71,4 +71,21 @@ public class Especialidades {
 			return null;	
 		}
 	}
+	
+	public ResultSet lerRegistro(int codigoEspecialidade) {
+		String comandoSQL;
+		
+		try {
+			comandoSQL = "SELECT * FROM especialidades WHERE Codigo_Especialidade = " + codigoEspecialidade;
+			
+			psComando = conBanco.prepareStatement(comandoSQL);
+			rsRegistros = psComando.executeQuery();
+			rsRegistros.next();
+			
+			return rsRegistros;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
