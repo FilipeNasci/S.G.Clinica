@@ -3,7 +3,7 @@
 <%@ page import="java.util.Date" %>
 <jsp:useBean id="conexao" scope="page" class="banco_dados.ConexaoBancoDados"/>
 <jsp:useBean id="especialidade" scope="page" class="banco_dados.Especialidades"/>
-    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 			while(rsRegistros.next()){
 				out.println("<tr>");
 				out.println("<td>"+rsRegistros.getString("Descricao_Especialidade")+"</td");
-				out.println("<td><a href='editar_especialidades.jsp?Codigo="+rsRegistros.getString("Codigo_Especialidade")+"'>Editar</a></td>");
+				out.println("<td><a href='editar_especialidade.jsp?Codigo="+rsRegistros.getString("Codigo_Especialidade")+"'>Editar</a></td>");
 				out.println("<td><a href='excluir_especialidade.jsp?Codigo="+rsRegistros.getString("Codigo_Especialidade")+"'>Excluir</a></td>");
 				out.println("</tr>");
 			}

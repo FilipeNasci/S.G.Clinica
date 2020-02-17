@@ -30,7 +30,7 @@ public class Especialidades {
 		String strComandoSQL;
 
 		try {
-			strComandoSQL = "UPDATE especialidades SET Descricao_Especialidade = '"+strDescricao+"'WHERE"
+			strComandoSQL = "UPDATE especialidades SET Descricao_Especialidade = '"+strDescricao+"' WHERE "
 					+ "Codigo_Especialidade = "+intCodigo;
 			psComando = conBanco.prepareStatement(strComandoSQL);
 			psComando.executeUpdate();
