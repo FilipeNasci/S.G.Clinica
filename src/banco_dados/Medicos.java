@@ -96,7 +96,7 @@ public class Medicos {
 		try {
 			comando = "SELECT medicos.Codigo_Medico AS CodigoMedico, medicos.Nome_Medico AS Medico, medicos.Codigo_Especialidade AS "+
 					"MedicoEspecialidade, especialidades.Codigo_Especialidade AS CodigoEspecialidade, especialidades.Descricao_Especialidade AS "+
-					"Especialidade, FROM medicos, especialidades WHERE medicos.Codigo_Especialidade = especialidades.Codigo_Especialidade "+
+					"Especialidade FROM medicos, especialidades WHERE medicos.Codigo_Especialidade = especialidades.Codigo_Especialidade "+
 					"ORDER BY medicos.Nome_Medico";
 			psComando = conBanco.prepareStatement(comando);
 			rsRegistros = psComando.executeQuery();

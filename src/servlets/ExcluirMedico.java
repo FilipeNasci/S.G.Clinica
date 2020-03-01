@@ -11,19 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import banco_dados.ConexaoBancoDados;
 import banco_dados.Medicos;
-import model.C_medicos;
 
 /**
- * Servlet implementation class InserirMedico
+ * Servlet implementation class ExcluirMedico
  */
-@WebServlet("/InserirMedico")
-public class InserirMedico extends HttpServlet {
+@WebServlet("/ExcluirMedico")
+public class ExcluirMedico extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InserirMedico() {
+    public ExcluirMedico() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,11 +40,10 @@ public class InserirMedico extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out;
-		
 		response.setContentType("text/html;charset=UTF-8");
 		out = response.getWriter();
 		
-		out.println("<!DOCTYPE html>");
+		out.println("<!DOCYPE html>");
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />");
@@ -53,31 +51,30 @@ public class InserirMedico extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>SGC - Sistema de Gestão de Clínicas</h1>");
-		out.println("<h2>Cadastro de médicos</h2>");
+		out.println("<h2>Exclusão de médico</h2>");
 		
 		try {
 			ConexaoBancoDados conexao = new ConexaoBancoDados();
 			Medicos medico = new Medicos();
-			C_medicos cmedico = new C_medicos(request.getParameter("txtNomeMedico"),
-					request.getParameter("txtCRM"),Integer.parseInt(request.getParameter("lstEspecialidade")));
+			
 			if(conexao.abrirConexao()) {
 				medico.configurarConexao(conexao.obterConexao());
-				if(medico.inserirRegistro(cmedico)) {
-					out.println("<h2>Médico cadastrado com sucesso!</h2>");
+				if(medico.excluirRegistro(Integer.parseInt(request.getParameter("codigo_medico")))) {
+					out.println("<h2>Registro médico excluido com sucesso!</h2>");
 					out.println("<br><br><br>");
-					out.println("<a href='menu_medicos.html'>Voltar</a>");
-				}else {
-					out.println("<h2>Não foi possivel realizar o cadastro!</h2>");
-				}
-			}else {
-				out.println("<h2>Não foi possivel estabelecer conexão com o banco de dados!</h2>");
-			}
-			
+					out.println("<a href='menu_medicos.html'>Fechar</a>");
+				}else
+					out.println("<h2>Não foi possível excluir o cadastro do médico!</h2>");
+				
+				conexao.fecharConexao();
+			}else
+				out.println("<h2>Não foi possível abrir conexão com o banco de dados!</h2>");
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.println("<h2>Erro do sistema: processo de cadastro de médico!</h2>");
+			out.println("<h2>Erro do sistema: processo de cadastro de funcionário!</h2>");
 		}
-		out.println("</body>");
-		out.println("</html>");
+		out.println("</body");
+		out.println("</html");
 	}
+
 }

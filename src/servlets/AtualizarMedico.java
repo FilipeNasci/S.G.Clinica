@@ -14,19 +14,19 @@ import banco_dados.Medicos;
 import model.C_medicos;
 
 /**
- * Servlet implementation class InserirMedico
+ * Servlet implementation class AtualizarMedico
  */
-@WebServlet("/InserirMedico")
-public class InserirMedico extends HttpServlet {
+@WebServlet("/AtualizarMedico")
+public class AtualizarMedico extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InserirMedico() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AtualizarMedico() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +41,7 @@ public class InserirMedico extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out;
-		
+
 		response.setContentType("text/html;charset=UTF-8");
 		out = response.getWriter();
 		
@@ -58,26 +58,23 @@ public class InserirMedico extends HttpServlet {
 		try {
 			ConexaoBancoDados conexao = new ConexaoBancoDados();
 			Medicos medico = new Medicos();
-			C_medicos cmedico = new C_medicos(request.getParameter("txtNomeMedico"),
-					request.getParameter("txtCRM"),Integer.parseInt(request.getParameter("lstEspecialidade")));
+			C_medicos cmedico = new C_medicos(request.getParameter("txtNomeMedico"), request.getParameter("txtCRM"),Integer.parseInt(request.getParameter("lstEspecialidade")));
+			cmedico.setCodigo_medico(Integer.parseInt("codigo_medico"));
+			
 			if(conexao.abrirConexao()) {
 				medico.configurarConexao(conexao.obterConexao());
-				if(medico.inserirRegistro(cmedico)) {
-					out.println("<h2>Médico cadastrado com sucesso!</h2>");
-					out.println("<br><br><br>");
-					out.println("<a href='menu_medicos.html'>Voltar</a>");
+				if(medico.alterarRegistro(cmedico)) {
+					out.println("<h2>Dados do médico atualizados com sucesso!</h2>");
 				}else {
-					out.println("<h2>Não foi possivel realizar o cadastro!</h2>");
+					out.println("<h2>Não foi possivel atualizar os dados do médico!</h2>");
 				}
-			}else {
+				conexao.fecharConexao();
+			}else
 				out.println("<h2>Não foi possivel estabelecer conexão com o banco de dados!</h2>");
-			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.println("<h2>Erro do sistema: processo de cadastro de médico!</h2>");
+			out.println("<h2>Erro do sistema: processo de cadastro médico!</h2>");
 		}
-		out.println("</body>");
-		out.println("</html>");
 	}
+
 }
